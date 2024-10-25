@@ -1,11 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import useWindowDimensions from "@/utils/general";
 import Confetti from "react-confetti";
 import styles from "./page.module.css";
 
 const Completed = ({ router }) => {
-  const { height, width } = useWindowDimensions();
   const [pos, setPos] = useState({ x: 60, y: 50 });
   const [loopConfetti, setloopConfetti] = useState(true);
   const [done, setDone] = useState(false);
@@ -35,8 +33,8 @@ const Completed = ({ router }) => {
           }}
         >
           <Confetti
-            width={width}
-            height={height}
+            width={window.innerWidth}
+            height={window.innerHeigh}
             recycle={loopConfetti}
             numberOfPieces={600}
           />
