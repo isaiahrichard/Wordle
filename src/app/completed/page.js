@@ -33,8 +33,8 @@ const Completed = ({ router }) => {
           }}
         >
           <Confetti
-            width={window.innerWidth}
-            height={window.innerHeigh}
+            width={window?.innerWidth || 0}
+            height={window?.innerHeight || 0}
             recycle={loopConfetti}
             numberOfPieces={600}
           />
