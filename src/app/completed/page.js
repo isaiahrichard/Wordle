@@ -7,9 +7,13 @@ const Completed = ({ router }) => {
   const [pos, setPos] = useState({ x: 60, y: 50 });
   const [loopConfetti, setloopConfetti] = useState(true);
   const [done, setDone] = useState(false);
+  const [windowVals, setWindowVals] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    console.log("CONFETTI");
+    setWindowVals({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
     setTimeout(() => {
       setloopConfetti(false);
     }, 5000);
@@ -33,8 +37,8 @@ const Completed = ({ router }) => {
           }}
         >
           <Confetti
-            width={window?.innerWidth || 0}
-            height={window?.innerHeight || 0}
+            width={windowVals.width}
+            height={windowVals.height}
             recycle={loopConfetti}
             numberOfPieces={600}
           />
