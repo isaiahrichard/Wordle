@@ -1,0 +1,56 @@
+.popupWrapper {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  animation: fade-in 3s, slide-up 3s;
+}
+
+.speechBubbleWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  bottom: 10px;
+}
+
+.speechBubble {
+  font-size: 1.1em;
+  color: #fff;
+  background: #a53d38;
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 320px;
+  text-align: center;
+  font-family: cursive;
+}
+
+.speechBubble::after {
+  content: "";
+  border: 20px solid transparent;
+  position: absolute;
+  border-bottom-color: #a53d38;
+  border-top: 0;
+  top: -20px;
+  left: 50%;
+  margin-left: -20px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    bottom: -500px;
+  }
+  to {
+    bottom: 50px;
+  }
+}

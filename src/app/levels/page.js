@@ -3,15 +3,20 @@ import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import GuessBox from "@/components/GuessBox/GuessBox";
+import Snowfall from "react-snowfall";
+import PopupMessage from "@/components/PopupMessage/PopupMessage";
+import ChristmasBag from "@/components/ChristmasBag/ChristmasBag";
 
 const wordList = [
-  { word: "arcade", hint: "Turning point location" },
-  { word: "winerack", hint: "Our favourite store" },
-  { word: "vincenzos", hint: "Sandwiches" },
-  { word: "flowers", hint: "Room decor" },
-  { word: "jewelry", hint: "Craft of choice" },
-  { word: "pinery", hint: "First kiss location" },
-  { word: "janetika", hint: "My favourite woman😚" },
+  { word: "homealone", hint: "Our First Christmas Movie", markedIndex: 2 },
+  { word: "abeerb", hint: "Holiday Season Workplace", markedIndex: 2 },
+  { word: "trees", hint: "Your Stocking Decoration", markedIndex: 1 },
+  {
+    word: "gingerbread",
+    hint: "Rock Solid Christmas Construction",
+    markedIndex: 5,
+  },
+  { word: "frosty", hint: "Christmas Snowman", markedIndex: 5 },
 ];
 
 const Levels = () => {
@@ -22,7 +27,8 @@ const Levels = () => {
   const [guessesUsed, setGuessesUsed] = useState(0);
   const [currentWordObj, setCurrentWordObj] = useState(wordList[stage]);
   const [completedStage, setCompletedStage] = useState(false);
-  const [score, setScore] = useState(0);
+  const [selectingLetter, setSelectingLetter] = useState(false);
+  const [christmasBag, setChristmasBag] = useState([]);
 
   const [guessList, setGuessList] = useState(["", "", "", "", "", ""]);
 
@@ -32,8 +38,7 @@ const Levels = () => {
       tempGuessList[guessesUsed] = currentGuess;
       if (currentGuess === currentWordObj.word) {
         setCompletedStage(true);
-        setCurrentGuess(currentWordObj.word);
-        setScore(score + 1);
+        setSelectingLetter(true);
       } else {
         setCurrentGuess("");
       }
@@ -43,8 +48,8 @@ const Levels = () => {
   };
 
   useEffect(() => {
-    if (stage === 7) {
-      router.push("completed");
+    if (stage === 5) {
+      router.push("christmasgame");
       return;
     }
     setCurrentGuess("");
@@ -97,6 +102,21 @@ const Levels = () => {
 
   return (
     <div className={styles.levelWrapper}>
+      {completedStage && stage === 0 && (
+        <PopupMessage
+          message={
+            selectingLetter
+              ? "One of these letters has some extra christmas cheer. Click the pulsing letters to add it to your bag"
+              : "A special letter will be highlighted each round. Collect them all for a surprise"
+          }
+        />
+      )}
+      {christmasBag.length ? (
+        <ChristmasBag bagContents={christmasBag} />
+      ) : (
+        <></>
+      )}
+      <Snowfall />
       <div className={styles.title}>Level {Math.min(stage + 1, 7)}</div>
       <div className={styles.subTitle}>Hint: {currentWordObj.hint}</div>
       <div
@@ -112,8 +132,21 @@ const Levels = () => {
           {currentWordObj.word.split("").map((letter, columnIndex) => (
             <div key={columnIndex}>
               <GuessBox
-                status={completedStage ? 2 : 0}
-                ad
+                status={
+                  completedStage
+                    ? columnIndex === currentWordObj.markedIndex
+                      ? 3
+                      : 2
+                    : 0
+                }
+                clickFunc={
+                  columnIndex === currentWordObj.markedIndex && completedStage
+                    ? () => {
+                        setSelectingLetter(false);
+                        setChristmasBag([...christmasBag, letter]);
+                      }
+                    : () => {}
+                }
                 textValue={currentGuess[columnIndex]}
                 focused={currentGuess.length === columnIndex}
               />
@@ -140,7 +173,7 @@ const Levels = () => {
           autoFocus={true}
           onBlur={({ target }) => target.focus()}
         />
-        {completedStage && (
+        {completedStage && !selectingLetter && (
           <div
             onClick={() => setStage(stage + 1)}
             className={styles.nextButton}

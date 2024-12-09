@@ -2,12 +2,45 @@
 }
 
 .guessBox {
-  border: solid #3a3b3d 2px;
+  border: solid #19bd83 2px;
   height: 65px;
   width: 65px;
   text-align: center;
   line-height: 65px;
   font-size: 2.1rem;
   font-weight: 500;
-  color: #2d2d2d;
+  color: #e5f3fd;
+}
+
+.specialGuessBox {
+  background-image: none !important;
+  -o-animation: fadeIt 3s ease-in-out;
+  animation: fadeIt 3s ease-in-out;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}
+
+@-o-keyframes fadeIt {
+  0% {
+    border-color: #19bd83;
+  }
+  50% {
+    border-color: #a53d38;
+    transform: scale(1.1);
+  }
+  100% {
+    border-color: #19bd83;
+  }
+}
+@keyframes fadeIt {
+  0% {
+    border-color: #19bd83;
+  }
+  50% {
+    border-color: #a53d38;
+    transform: scale(1.1);
+  }
+  100% {
+    border-color: #19bd83;
+  }
 }

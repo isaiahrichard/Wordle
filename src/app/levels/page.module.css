@@ -8,13 +8,13 @@
 .title {
   font-size: 6rem;
   font-weight: 600;
-  color: rgb(45, 45, 45);
+  color: #e5f3fd;
 }
 
 .subTitle {
   font-size: 1rem;
   font-weight: 600;
-  color: rgb(45, 45, 45);
+  color: #e5f3fd;
 }
 
 .letterGrid {
@@ -31,18 +31,17 @@
   margin-top: 20px;
   text-align: center;
   line-height: 64px;
-  background: #98e4d9;
+  background: #19bd83;
   padding: 10px 30px;
   border-radius: 999em;
   color: #fff;
   font-size: 16px;
-  border: 2px solid gray;
   font-family: lato;
   font-size: 4rem;
   letter-spacing: 2px;
   font-weight: 600;
+  cursor: pointer;
 }
 .nextButton:hover {
-  background: #7bbcb6;
-  cursor: pointer;
+  border: 1px solid white;
 }
