@@ -27,30 +27,30 @@ const christmasgame = () => {
       <div className={styles.scroll} />
       <div className={styles.messageContainer}>
         <div>
-          <span style={{ fontSize: "2.5rem", color: "#538d4e" }}>M</span>y days
+          <span style={{ fontSize: "1.5rem", color: "#538d4e" }}>M</span>y days
           always end on a high note when I end them talking to you. Hearing your
           voice and seeing your smile can turn my worst day into a winter
           wonderland
         </div>
         <div>
-          <span style={{ fontSize: "2.5rem", color: "#538d4e" }}>E</span>
+          <span style={{ fontSize: "1.5rem", color: "#538d4e" }}>E</span>
           ven now that the days are getting colder and dark being in your
           presence gives me a warmth that makes me feel like I can stop a
           blizzard
         </div>
         <div>
-          <span style={{ fontSize: "2.5rem", color: "#538d4e" }}>R</span>
+          <span style={{ fontSize: "1.5rem", color: "#538d4e" }}>R</span>
           arely do you find someone that you can talk endlessly with and
           consider myself lucky to have such a great yapping partner
         </div>
         <div>
-          <span style={{ fontSize: "2.5rem", color: "#538d4e" }}>R</span>
+          <span style={{ fontSize: "1.5rem", color: "#538d4e" }}>R</span>
           eflecting on the past few months never fails to make me smile. From
           4am hangman to accidental nose picking, happy memories are in no short
           supply
         </div>
         <div>
-          <span style={{ fontSize: "2.5rem", color: "#538d4e" }}>Y</span>
+          <span style={{ fontSize: "1.5rem", color: "#538d4e" }}>Y</span>
           ou&apos;re one of the most caring and thoughtful people that I know
           and I&apos;m so happy that I get to call you my girlfriend
         </div>
